@@ -360,8 +360,11 @@ def dotdelay_frames(spatial_gabor_sin, spatial_gabor_cos,
     # sum across delays
     nouts = np.zeros_like(outs)
     noutc = np.zeros_like(outc)
-    tdxc = int(np.ceil(outs.shape[1]/2.0))
-    delays = np.arange(outs.shape[1])-tdxc +1
+    #tdxc = int(np.ceil(outs.shape[1]/2.0))
+    #delays = np.arange(outs.shape[1])-tdxc +1
+    
+    delays = np.arange(round(outs.shape[1] / 4))  # <-
+
     for ddx, num in enumerate(delays):
         if num == 0:
             nouts[:, ddx] = outs[:,ddx]
